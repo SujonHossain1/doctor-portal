@@ -1,0 +1,18 @@
+.header {
+    background-image: url(../../../images/transparent-chair.png);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 10;
+}
+.header::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: #3A4256;
+    width:calc(100% - 70%);
+    height: inherit;
+    z-index: -1;
+}
