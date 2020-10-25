@@ -1,0 +1,13 @@
+.blog-card{
+    transition: all .1s ease-in-out!important;
+}
+.blog-section .blog-card:hover {
+    background-image: linear-gradient(75deg,#19d3ae,#0fcfec), url(../../../images/testimonial.png);
+    color: #fff!important;
+}
+.blog-card:hover .lead{
+    color: #fff!important;
+}
+.blog-card:hover .text-primary{
+    color: #fff !important;
+}

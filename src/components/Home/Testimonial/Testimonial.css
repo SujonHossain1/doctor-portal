@@ -1,0 +1,6 @@
+.testimonial .container {
+    background-image: url(../../../images/testimonial.png);
+    background-repeat: no-repeat;
+    background-position: 100% 0;
+    background-size: 150px;
+}

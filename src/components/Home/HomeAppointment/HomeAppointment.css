@@ -1,0 +1,27 @@
+.home-appointment{
+    background: url(../../../images/transparent-chair.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 420px;
+    background-position: 50%;
+    
+}
+.home-appointment::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #0d122d;;
+    opacity: .9;
+    top: 0;
+    z-index: -1;
+}
+
+.home-appointment-img{
+    position: absolute;
+    left: 0;
+    height: 500px;
+    bottom: 0;
+}
