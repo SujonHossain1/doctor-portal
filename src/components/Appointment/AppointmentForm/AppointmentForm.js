@@ -1,5 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { useForm } from "react-hook-form";
+import './AppointmentForm.css';
 
 const customStyles = {
     content: {
@@ -14,24 +16,69 @@ const customStyles = {
 
 Modal.setAppElement('#root')
 
-const AppointmentForm = ({modalIsOpen, closeModal}) => {
-    
+const AppointmentForm = ({ modalIsOpen, closeModal, date, subject }) => {
+    const { register, handleSubmit, errors } = useForm();
+
+    const onSubmit = (data, event) => {
+        console.log(data);
+        closeModal();
+        }
 
     return (
         <div>
-           
+
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel="Example Modal"
             >
-                <div>I am a modal</div>
-                <form>
+                <h4 className="text-center text-primary mt-3 mb-1"> {subject} </h4>
+                <h6 className="text-center text-primary mt-3 mb-1"> Appointment Date: {date} </h6>
+
+                <form className="p-5" onSubmit={handleSubmit(onSubmit)}>
+                    <div className="form-group">
+                        <input type="text" ref={register({ required: true })} name="name" placeholder="Your Name" className="form-control" />
+                        {errors.name && <span className="text-danger">This field is required</span>}
+
+                    </div>
                     
+                    <div className="form-group">
+                        <input type="text" ref={register({ required: true })} name="phone" placeholder="Phone Number" className="form-control" />
+                        {errors.phone && <span className="text-danger">This field is required</span>}
+                    </div>
+                    <div className="form-group">
+                        <input type="text" ref={register({ required: true })} name="email" placeholder="Email" className="form-control" />
+                        {errors.email && <span className="text-danger">This field is required</span>}
+                    </div>
+                    <div className="form-group row">
+                        <div className="col-4">
+
+                            <select className="form-control" name="gender" ref={register({ required: true })} >
+                                <option disabled={true} value="Not set">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Not set">Other</option>
+                            </select>
+                            {errors.gender && <span className="text-danger">This field is required</span>}
+
+                        </div>
+                        <div className="col-4">
+                            <input ref={register({ required: true })} className="form-control" name="age" placeholder="Your Age" type="number" />
+                            {errors.age && <span className="text-danger">This field is required</span>}
+                        </div>
+                        <div className="col-4">
+                            <input ref={register({ required: true })} className="form-control" name="weight" placeholder="Weight" type="number" />
+                            {errors.weight && <span className="text-danger">This field is required</span>}
+                        </div>
+                    </div>
+
+                    <div className="form-group text-right">
+                        <button type="submit" className="btn btn-primary">Send</button>
+                    </div>
                 </form>
             </Modal>
-        </div>
+        </div >
     );
 };
 
